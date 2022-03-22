@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Detail from './Detail';
+import Nav from './Nav';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App/>
+    {/* <Detail/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
