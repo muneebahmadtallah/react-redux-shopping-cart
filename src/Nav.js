@@ -1,8 +1,10 @@
 import React from "react";
 import { BsFillCartDashFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
+  const {totalQuantities} = useSelector(state=> state.CartReducer);
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -29,7 +31,7 @@ const Nav = () => {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/Detail">
-                  Detail
+                Detail
               </Link>
             </li>
             <li className="nav-item">
@@ -46,6 +48,11 @@ const Nav = () => {
           <form className="d-flex justify-content-between align-items-center">
             <span className="text-warning cart mx-4">
               <BsFillCartDashFill />
+              {totalQuantities > 0 ? 
+              <span class="top-0 translate-middle badge rounded-pill bg-danger">
+                {totalQuantities}
+        
+              </span> : ""}
             </span>
             <button className="btn btn-outline-warning" type="submit">
               Search
