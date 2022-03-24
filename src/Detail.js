@@ -1,71 +1,86 @@
-import React, {useEffect} from 'react'
-import { useParams } from 'react-router-dom';
-import { useDispatch, UseSelector } from 'react-redux';
-import kurta from "./images/kurta2.jpg";
-
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+// import kurta from "./images/kurta2.jpg";
 
 const Detail = () => {
-  
+  const [quantity, setQuantity] = useState(1);
   // const params = useParams();
   // console.log(params);
-  const {id} = useParams();
-  console.log(id);
+  const { id } = useParams();
+  // console.log(id);
   //in above line we use {id} as an array destructureing
-  
-  // const dispatch = useDispatch();
 
-  // useEffect(()=>{
-  //   dispatch({type: 'PRODUCT', id: id })
-  //   //dispatch function executes the action. so in ProductsReducers file we can easily get the id by wrting action.id
-  // }, [id])
+  const dispatch = useDispatch();
+
+  const { product } = useSelector((state) => state.ProductsReducers);
+  // console.log(product);
+
+  useEffect(() => {
+    dispatch({ type: "PRODUCT", id });
+  }, [id]);
+
+  const decQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  //dispatch function executes the action. so in ProductsReducers file we can easily get the id by wrting action.id
+
+  const price = product.price;
+  const discount = price - (price * 20) / 100;
 
   return (
     <div className="detail gap-2 d-md-flex justify-content-md-between">
       <div className="col-md-5">
         <img
-          src={kurta}
+          src={product.image}
           className="img-fluid"
           style={{ minWidth: "200px", minHeight: "200px" }}
-          alt="Kurta"
+          alt="ProductImage"
         />
       </div>
       <div className="col-6 detailRight pb-3">
-        <h1>Men's Cotton Kurtan</h1>
-        <h5 className="text-warning">Rating | 4.5</h5>
+        <h2 className="text-secondary">{product.title}</h2>
         <div className="tech d-flex justify-content-between">
-          <h4 className='text-warning fw-bold'>price $20 </h4>
-          <div>
-          <button type="button" className="btn btn-warning">
-            -
-          </button>
-          <input type="text" className='mx-1 mt-1'></input>
-          <button type="button" className="btn btn-warning mr-20">
-            +
-          </button>
-           </div>
+          <h4 className="text-warning fw-bold">
+            <span className="text-decoration-line-through text-secondary ">
+              ${discount}
+            </span>
+            &nbsp;&nbsp; ${product.price}
+          </h4>
+
+          <h5 className="text-warning fw-bold">
+            <span className="text-secondary ">Rating |</span>
+          </h5>
         </div>
-        <p>
-          In publishing and graphic design, Lorem ipsum is a placeholder text
-          commonly used to demonstrate the visual form of a document or a
-          typeface without relying on meaningful content. Lorem ipsum may be
-          used as a placeholder before the final copy is available. It is also
-          used to temporarily replace text in a process called greeking, which
-          allows designers to consider the form of a webpage or publication,
-          without the meaning of the text influencing the design. Lorem ipsum is
-          typically a corrupted version of De finibus bonorum et malorum, a
-          1st-century BC text by the Roman statesman and philosopher Cicero,
-          with words altered, added, and removed to make it nonsensical and
-          improper Latin.
-        </p>
-        <button className="btn btn-secondary" type="submit">
+        <p>{product.description}</p>
+        {/* <button className="btn btn-secondary" type="submit">
           Buy Now
-        </button>
-        <button className="btn btn-warning" type="submit">
-          Add to Cart
-        </button>
+        </button> */}
+        <div className="qnty">
+          <h3 className="text-secondary mr-20">Quantity</h3>
+          <span onClick={decQuantity}>-</span>
+          <span>{quantity}</span>
+          <span className="mr-20" onClick={() => setQuantity(quantity + 1)}>
+            +
+          </span>
+
+          <button
+            className="btn btn-lg btn-warning ml-20 fw-bold"
+            type="submit"
+            onClick={() =>
+              dispatch({ type: "ADD_TO_CART", payload: { product, quantity } })
+            }
+          >
+            {" "}
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default Detail
+export default Detail;
