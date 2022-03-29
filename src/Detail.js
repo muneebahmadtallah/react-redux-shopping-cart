@@ -31,6 +31,7 @@ const Detail = () => {
   const price = product.price;
   const discount = price - (price * 20) / 100;
 
+  // const rating = product.rating.rate;
   return (
     <div className="detail gap-2 d-md-flex justify-content-md-between">
       <div className="col-md-5">
@@ -53,7 +54,7 @@ const Detail = () => {
 
           <h5 className="text-secondary fw-bold">
             Rating |
-            {/* <span className="text-warning ">{product.rating.rate}</span> */}
+            {/* <span className="text-warning "> {rating}</span> */}
           </h5>
         </div>
         <p>{product.description}</p>

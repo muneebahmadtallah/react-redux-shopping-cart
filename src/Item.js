@@ -3,6 +3,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Item = (props) => {
   
+
+
         let { title, id, img, price } =          props;
         const discount = price- (price*20)/100;
   return (
@@ -27,11 +29,11 @@ const Item = (props) => {
           <div className="d-flex justify-content-between">
             <p className="px-4 pt-2 text-muted">
               <span className=" text-decoration-line-through mx-2">
-                {price}
+                ${price}
               </span>
               20%
             </p>
-            <p className="px-4 pt-2 fw-bold">{discount}</p>
+            <p className="px-4 pt-2 fw-bold">${discount.toFixed(0)}</p>
           </div>
         </ul>
         <div className="card-body d-grid gap-2 d-md-flex justify-content-md-between">
@@ -39,12 +41,16 @@ const Item = (props) => {
             Card link
           </a> */}
 
-          <button className="btn btn-secondary" type="submit">
-            Details
-          </button>
-          <button className="btn btn-warning" type="submit">
-            Add to Cart
-          </button>
+          <Link to={`/Detail/${id}`}>
+            <button className="btn btn-secondary" type="submit">
+              Details
+            </button>
+          </Link>
+          <Link to={`/Detail/${id}`}>
+            <button className="btn btn-warning" type="submit">
+              Add to Cart
+            </button>
+          </Link>
         </div>
       </div>
     </div>
