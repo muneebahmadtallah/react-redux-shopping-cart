@@ -280,7 +280,7 @@ const ProductsReducers = (state = initialState, action) => {
       return {
         ...state,
         product: state.products.find(
-          (product) => product.id === parseInt(action.id)
+          (products) => products.id === parseInt(action.payload.id)
         ),
       };
     default:

@@ -13,7 +13,7 @@ function App() {
       <Nav />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/detail" element={<Detail />} />
+        {/* <Route exact path="/detail" element={<Detail />} /> */}
         <Route exact path="/detail/:id" element={<Detail />} />
         <Route exact path="/Cart" element={<Cart />} />
       </Routes>

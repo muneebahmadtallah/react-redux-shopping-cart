@@ -92,6 +92,7 @@ const Cart = () => {
             <h4 className='text-center my-5 text-warning'>"No Products availables"</h4>
           )}
         </div>
+            {products.length > 0 ?
         <div className="col-md-3 grandTotal">
           <h2 className="text-center text-warning">Grand Total Bill</h2>
           <h4>
@@ -103,6 +104,8 @@ const Cart = () => {
             <button className="btn btn-warning my-4 mx-auto">Check Out</button>
           
         </div>
+        : ""}
+
       </div>
     </div>
   );

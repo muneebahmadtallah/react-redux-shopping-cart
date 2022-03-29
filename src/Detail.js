@@ -8,8 +8,8 @@ const Detail = () => {
   // const params = useParams();
   // console.log(params);
   const { id } = useParams();
-  // console.log(id);
   //in above line we use {id} as an array destructureing
+  //useParams returns an object of key/value pairs of URL parameters. Use it to access match.params of the current <Route>.
 
   const dispatch = useDispatch();
 
@@ -17,7 +17,8 @@ const Detail = () => {
   // console.log(product);
 
   useEffect(() => {
-    dispatch({ type: "PRODUCT", id });
+    dispatch({ type: "PRODUCT", payload: { id } });
+    //dispatch function executes the action. so in ProductsReducers file we can easily get the id by wrting action.payload.id
   }, [id]);
 
   const decQuantity = () => {
@@ -25,8 +26,6 @@ const Detail = () => {
       setQuantity(quantity - 1);
     }
   };
-
-  //dispatch function executes the action. so in ProductsReducers file we can easily get the id by wrting action.id
 
   const price = product.price;
   const discount = price - (price * 20) / 100;
@@ -53,8 +52,7 @@ const Detail = () => {
           </h4>
 
           <h5 className="text-secondary fw-bold">
-            Rating |
-            {/* <span className="text-warning "> {rating}</span> */}
+            Rating |{/* <span className="text-warning "> {rating}</span> */}
           </h5>
         </div>
         <p>{product.description}</p>
@@ -72,8 +70,13 @@ const Detail = () => {
           <button
             className="btn btn-lg btn-warning ml-20 fw-bold"
             type="submit"
-            onClick={() =>
-              dispatch({ type: "ADD_TO_CART", payload: { product, quantity } })
+            onClick={
+              () =>
+                dispatch({
+                  type: "ADD_TO_CART",
+                  payload: { product, quantity },
+                })
+              // we initiate ADD_TO_CART case in CartReducer, and also we will pass product, quantity in a payload
             }
           >
             Add to Cart
