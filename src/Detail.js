@@ -51,8 +51,9 @@ const Detail = () => {
             &nbsp;&nbsp; ${product.price}
           </h4>
 
-          <h5 className="text-warning fw-bold">
-            <span className="text-secondary ">Rating |</span>
+          <h5 className="text-secondary fw-bold">
+            Rating |
+            {/* <span className="text-warning ">{product.rating.rate}</span> */}
           </h5>
         </div>
         <p>{product.description}</p>
@@ -74,7 +75,6 @@ const Detail = () => {
               dispatch({ type: "ADD_TO_CART", payload: { product, quantity } })
             }
           >
-            {" "}
             Add to Cart
           </button>
         </div>

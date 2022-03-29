@@ -34,19 +34,11 @@ const Nav = () => {
                 Detail
               </Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/">
-                Link
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/">
-                Link
-              </a>
-            </li>
+            
           </ul>
           <form className="d-flex justify-content-between align-items-center">
-            <span className="text-warning cart mx-4">
+            <Link to="/Cart">
+            <span className="text-warning mx-4">
               <BsFillCartDashFill />
               {totalQuantities > 0 ? 
               <span class="top-0 translate-middle badge rounded-pill bg-danger">
@@ -54,6 +46,7 @@ const Nav = () => {
         
               </span> : ""}
             </span>
+            </Link>
             <button className="btn btn-outline-warning" type="submit">
               Search
             </button>
