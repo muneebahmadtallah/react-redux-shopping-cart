@@ -13,13 +13,13 @@ nav span{
   font-size: 20px;
   padding: 5px;
   padding-top: 4px;
+  border-radius: 50%;
 }
 nav span:hover{
   color: #fff !important;
   /* background-color: rgb(255, 174, 0); */
-  padding: 5px;
-  padding-top: 4px;
-  border-radius: 50%;
+  /* padding: 5px; */
+  /* padding-top: 4px; */
   cursor: pointer;
 }
 .carousel{
@@ -122,3 +122,46 @@ cursor: pointer; }
 }
 .detail img:hover { transform: scale(1.05);
 cursor: pointer; }
+
+/*cart detail*/
+.cart_detail{
+  /* margin-top: 20px; */
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.cart_detail span{
+ height: 25px;
+ width: 25px;
+ text-align: center;
+ /* padding-top: 4px; */
+ font-size: 15px;
+ border: 1.5px solid rgb(214, 170, 26);
+ /* border-radius: 3px; */
+}
+.cart_detail span:hover{
+ border: 2px solid rgb(214, 170, 26);
+ cursor: pointer ;
+}
+.remove{
+  font-size: 20px;
+}
+.remove:hover{
+  color: #000 !important;
+  cursor: pointer;
+
+}
+.grandTotal{
+  /* background-color: rgb(214, 170, 26); */
+  border: 1px solid rgb(214, 170, 26); 
+  border-radius: 10px;
+  padding: 10px;
+  max-height: 200px;
+  margin-top: 100px;
+  /* color: #fff; */
+}
+.grandTotal button{
+  display: block;
+  text-align: center;
+
+}

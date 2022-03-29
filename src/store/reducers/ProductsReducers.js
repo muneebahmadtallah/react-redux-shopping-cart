@@ -267,19 +267,22 @@ const initialState = {
       },
     },
   ],
-product : {}
-}
-
-
+  product: {},
+};
 
 const ProductsReducers = (state = initialState, action) => {
   switch (action.type) {
     case "PRODUCT":
-      //first we spread state nd copy all the data from state then we update product: 
-      // in find method we check products.id is equal to action.id (we can take any argument in find method not specific products) 
+      //first we spread state nd copy all the data from state then we update product:
+      // in find method we check products.id is equal to action.id (we can take any argument in find method not specific products)
       // (action.id will be taken from the action done by the user by click the desire item)
       // both id's type must be same
-      return {...state, product: state.products.find((product) => product.id === parseInt(action.id))}
+      return {
+        ...state,
+        product: state.products.find(
+          (product) => product.id === parseInt(action.id)
+        ),
+      };
     default:
       return state;
   }
